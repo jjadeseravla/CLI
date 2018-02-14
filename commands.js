@@ -2,7 +2,10 @@ const program = require('commander');
 const { prompt } = require('inquirer');
 const {
   addCustomer,
-  findCustomer
+  findCustomer,
+  updateCustomer,
+  removeCustomer,
+  listCustomers
 } = require('./index');
 
 //Customer questions
@@ -41,6 +44,7 @@ program
 //     addCustomer({firstname, lastname, phone, email});
 //   });
 
+//Add commands
 program
   .command('add')
   .alias('a')
@@ -49,14 +53,20 @@ program
     prompt(questions).then(answers => addCustomer(answers)); //gives a promise which then returns you answers
   })
 
+//Find command
 program
   .command('find <name>')
   .alias('f')
   .description('Find a customer')
   .action(name => findCustomer(name));
 
+//Update Command
+program
+  .command('update <_id>') //id comes in as parameter
+  .alias('u')
+  .description('Update a customer')
+  .action(() => {
+    prompt(questions).then(answers => updateCustomer(_id, answers)); //id first cos in index.js in update customer, it takes in id first and then customer
+  });
 
 program.parse(process.argv);
-
-//https://www.youtube.com/watch?v=v2GKt39-LPA
-     //dsf
