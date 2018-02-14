@@ -69,4 +69,11 @@ program
     prompt(questions).then(answers => updateCustomer(_id, answers)); //id first cos in index.js in update customer, it takes in id first and then customer
   });
 
+  //Remove command
+  program
+    .command('remove <_id>')
+    .alias('r')
+    .description('Remove a customer')
+    .action(_id => removeCustomer(_id));
+
 program.parse(process.argv);
