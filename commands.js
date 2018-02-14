@@ -65,7 +65,7 @@ program
   .command('update <_id>') //id comes in as parameter
   .alias('u')
   .description('Update a customer')
-  .action(() => {
+  .action((_id) => {
     prompt(questions).then(answers => updateCustomer(_id, answers)); //id first cos in index.js in update customer, it takes in id first and then customer
   });
 
