@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+//above line means we can make it a shell command instead of doing node commands.js from this directory
+//updated package.json and also need to run npm link on command line
 const program = require('commander');
 const { prompt } = require('inquirer');
 const {
